@@ -1,0 +1,39 @@
+//what is Socket.js?
+
+Socket.IO is a JavaScript library for real-time web applications that enables bidirectional communication between web clients and servers.
+to add realtime interaction between multiclients using server
+
+//SETUP
+
+          //Backend
+          const express = require("express");
+          const socket = require("socket.io");
+          const http = require("http");
+
+          const app = express();
+          const server = http.createServer(app);
+          const io = socket(server);
+
+          io.on('connection', (socket) => {
+            console.log('a user connected');
+            socket.on('message', (msg) => {
+              console.log('message: ' + msg);
+            });
+          });
+
+            //Frontend  
+            use the socket.js CDN to connect with socket.js
+            <script
+                src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+                integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+                crossorigin="anonymous"
+            ></script>
+
+            then connect it with socket
+            const socket = io();
+            socket.on('connect', () => {
+              console.log('connected to server');
+            });
+            socket.on('message', (msg) => {
+              console.log('message: ' + msg);
+            });
