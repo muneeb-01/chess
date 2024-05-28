@@ -74,6 +74,8 @@ io.on("connection", (uniqueSocket) => {
   });
 });
 
-server.listen(3000, (req, res) => {
+const port = 3000;
+
+server.listen(port, (req, res) => {
   console.log("connected on port:3000");
 });
